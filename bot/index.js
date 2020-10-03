@@ -1,25 +1,26 @@
-const Discord = require("discord.js"); // check is I cannot import it like ES6
+const Discord = require("discord.js");
 const config = require("./config/config.json");
+const commandMap = require("./commands")
 
-
-// login - make login in another file
 const client = new Discord.Client();
 
 client.login(config.BOT_TOKEN);
 
-// commands - create file for commands
-
 const prefix = "!";
 
 client.on("message", function(message) {
-    if (message.author.bot) return; // if the message comes from another bot, stop processing  
-    if (!message.content.startsWith(prefix)) return; // if the message doesn't start with command prefix, stop processing
+    if (message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
 
-    const body = message.content.slice(prefix.length); // removes the prefix
-    const args = body.split(' '); // creates an array with command and args, if has it
-    const command = args.shift().toLocaleLowerCase(); // get and remove the first index on args array, and the first is always the command
+    const body = message.content.slice(prefix.length);
+    const args = body.split(' ');
+    const command = args.shift().toLocaleLowerCase();
 
-    if (command === "ping") {
-        message.reply("Pong!");
-    }
+    if (!commandMap.has(command)) return message.reply("Command not found");
+
+    const commandFunc = commandMap.get(command);
+
+    const response = commandFunc.func(args);
+    
+    message.reply(response);
 });
