@@ -1,6 +1,8 @@
-let person = {
-    author: "",
-}
+// let person = {
+//     author: "",
+//     initialTime: new Date().toLocaleTimeString(),
+//     finalTime: new Date().toLocaleTimeString()
+// }
 
 let people = []
 
@@ -11,27 +13,40 @@ argFunc.set("bye", bye)
 argFunc.set("print", print)
 
 function print(){
-    return person
+    let peopleOnline = ''
+
+    people.forEach( person => {
+            console.log(person)
+            peopleOnline += `${person} is online! \n`
+        }
+    )
+
+    return peopleOnline
 }
 
-function welcome(){
-    person["initialTime"] = new Date().toLocaleTimeString()
+function welcome(author){
+//     let personAux = people.find(author)
+//     personAux.initialTime = new Date().toLocaleTimeString()
 
-   return `${person.author} started to work at ${person["initialTime"]}`
+//    return `${personAux.author} started to work at ${personAux.initialTime}`
 }
 
-function bye(){
-    person["finalTime"] = new Date().toLocaleTimeString()
-    // person.totalTime = person.finalTime - person.initialTime
+function bye(author){
+    // person.finalTime = new Date().toLocaleTimeString()
+    // // person.totalTime = person.finalTime - person.initialTime
 
-    return `${person.author} finished to work at ${person["finalTime"]}`
+    // return `${person.author} finished to work at ${person["finalTime"]}`
 }
 
 module.exports = { 
     func: function(args) { 
         const func = args.shift()
-        person["author"] = args[0].username
+        people.push({
+            author: args[0].username,
+            initialTime: '',
+            finalTime: '',
+        })
 
-        return argFunc.get(func)();
+        return argFunc.get(func)(args[0].username);
      },
 };
