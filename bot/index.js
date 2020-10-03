@@ -22,5 +22,5 @@ client.on("message", function(message) {
 
     const response = commandFunc.func(args);
     
-    message.reply(response + message.author);
+    message.reply(response);
 });
