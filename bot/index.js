@@ -16,6 +16,8 @@ client.on("message", function(message) {
     const args = body.split(' ');
     const command = args.shift().toLocaleLowerCase();
 
+    args.push(message.author)
+
     if (!commandMap.has(command)) return message.reply("Command not found");
 
     const commandFunc = commandMap.get(command);
@@ -23,4 +25,15 @@ client.on("message", function(message) {
     const response = commandFunc.func(args);
     
     message.reply(response);
+
+    const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('#3A2956')
+        .setTitle('Officebot says: ')
+        .setDescription(message)
+        .addFields(
+            {value: response },
+        )
+        .setTimestamp()
+
+    message.channel.send(exampleEmbed);
 });
