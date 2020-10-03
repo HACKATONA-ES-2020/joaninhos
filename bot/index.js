@@ -8,7 +8,7 @@ client.login(config.BOT_TOKEN);
 
 const prefix = "!";
 
-client.on("message", function(message) {
+client.on("message", async function(message) {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
 
@@ -24,7 +24,7 @@ client.on("message", function(message) {
 
     const commandFunc = commandMap.get(command); 
 
-    const response = commandFunc.func(args);
+    const response = await commandFunc.func(args);
     
     message.channel.send(
         new Discord.MessageEmbed()
