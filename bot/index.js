@@ -19,16 +19,10 @@ client.on("message", function(message) {
     args.push(message.author)
 
     if (!commandMap.has(command)){
-        return message.channel.send(
-            new Discord.MessageEmbed()
-                .setColor('#3A2956')
-                .setTitle('Officebot says: ')
-                .setDescription("Command not found")
-                .setTimestamp()
-            );
+        return;
     }
 
-    const commandFunc = commandMap.get(command);
+    const commandFunc = commandMap.get(command); 
 
     const response = commandFunc.func(args);
     
