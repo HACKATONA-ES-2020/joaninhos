@@ -15,23 +15,22 @@ function print(){
 }
 
 function welcome(){
-    person["initialTime"] = new Date()
+    person["initialTime"] = new Date().toLocaleTimeString()
 
-   return JSON.stringify(person)
+   return `${person.author} started to work at ${person["initialTime"]}`
 }
 
-function bye(author){
-    person["finalTime"] = new Date()
+function bye(){
+    person["finalTime"] = new Date().toLocaleTimeString()
     // person.totalTime = person.finalTime - person.initialTime
 
-    return JSON.stringify(person)
+    return `${person.author} finished to work at ${person["finalTime"]}`
 }
 
 module.exports = { 
     func: function(args) { 
         const func = args.shift()
-        console.log(func)
-        person["author"] = args.id
+        person["author"] = args[0].username
 
         return argFunc.get(func)();
      },
