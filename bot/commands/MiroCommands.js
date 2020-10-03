@@ -4,10 +4,12 @@ const argFunc = new Map();
 
 argFunc.set("get", getBoard)
 
-function getBoard(args){
+async function getBoard(args){
     const id = args.shift()
 
-    return client.get(id)
+    const resp = await client.get(id)
+
+    return `${resp.name} \n ${resp.description} \n ${resp.viewLink} \n`
 }
 
 function createBoard(args){

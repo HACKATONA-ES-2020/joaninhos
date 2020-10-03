@@ -11,13 +11,12 @@ async function getBoard(id){
         })
 
         const data = await response.json() 
-
+        
         return {
             name: data.name,
             description: data.description,
-            link: data.viewLink
+            viewLink: data.viewLink
         }
-
     } catch (e) {
         return "error"
     }
