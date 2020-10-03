@@ -32,8 +32,6 @@ client.on("message", function(message) {
 
     const response = commandFunc.func(args);
     
-    const exampleEmbed = 
-
     message.channel.send(
         new Discord.MessageEmbed()
             .setColor('#3A2956')
