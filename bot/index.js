@@ -18,22 +18,19 @@ client.on("message", function(message) {
 
     args.push(message.author)
 
-    if (!commandMap.has(command)) return message.reply("Command not found");
+    if (!commandMap.has(command)){
+        return;
+    }
 
-    const commandFunc = commandMap.get(command);
+    const commandFunc = commandMap.get(command); 
 
     const response = commandFunc.func(args);
     
-    message.reply(response);
-
-    const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#3A2956')
-        .setTitle('Officebot says: ')
-        .setDescription(message)
-        .addFields(
-            {value: response },
-        )
-        .setTimestamp()
-
-    message.channel.send(exampleEmbed);
+    message.channel.send(
+        new Discord.MessageEmbed()
+            .setColor('#3A2956')
+            .setTitle('Officebot says: ')
+            .setDescription(response)
+            .setTimestamp()
+        );
 });
