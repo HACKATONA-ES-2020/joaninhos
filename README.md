@@ -1,9 +1,5 @@
 # OfficeBot
 
-BAIXAR -> NPM DISCORD.JS
-
-# OfficeBot
-
 OfficeBot é um bot para auxiliar na experiência de Home Office.
 
 ## Installation
