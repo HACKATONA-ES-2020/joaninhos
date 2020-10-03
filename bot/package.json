@@ -15,6 +15,8 @@
   "author": "Arthur Maciel Gomes <arthur.maciel.2001@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.3.1"
+    "discord.js": "^12.3.1",
+    "mongoose": "^5.10.7",
+    "nodemon": "^2.0.4"
   }
 }
