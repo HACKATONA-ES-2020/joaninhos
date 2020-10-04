@@ -72,7 +72,6 @@ const gitHubClient = {
     searchMe: searchMe,
     getRepositories: getRepositories,
     searchByName: searchByName,
-    listRepoLanguages: listRepoLanguages,
 }
 
 module.exports = gitHubClient
