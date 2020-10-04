@@ -1,26 +1,38 @@
 // comandos para o git
 const gitClient = require("../client/GitHubClients.js");
 
+const argFunc = new Map();
+
+argFunc.set("repositories", findUserRepositories);
+argFunc.set("search-user", searchUserByName);
+
+async function createNewRepository() {
+    const repo = await gitClient.createNewRepository();
+
+}
+
 async function findUserRepositories(username) {
     const repos = await gitClient.getRepositories(username);
     let stringFinal = "";
 
-    repos.forEach(repo =>{
+    repos.forEach(repo => {
         stringFinal += `${repo.name} \n ${repo.description} \n ${repo.htmlUrl} \n`;
     });
 
     return stringFinal;
 }
 
+async function searchUserByName(username) {
+    const user = await gitClient.searchByName(username);
+
+    return `${user.login} \n ${user.name} \n ${user.email} 
+      \n ${user.avatarURL} \n ${user.company} \n ${user.location} 
+      \n ${user.bio} \n\n`;
+}
+
 module.exports = {
     func: async function (args) {
-        if (args[0] === 'repos') {
-            const response = await findUserRepositories(args[1]);
-            return response;
-        }
-        else {
-            return "`Args` is not a valid command";
-        }
-
+        const func = args.shift();
+        return argFunc.get(func)(args[0]);
     },
 };
