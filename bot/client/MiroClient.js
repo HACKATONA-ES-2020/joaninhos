@@ -24,15 +24,27 @@ async function getBoard(id){
 
 async function createBoard(){
     try {
+        const policy = {
+            access: "comment",
+            teamAccess: "edit"
+        }
+
+        const request = {
+            sharingPolicy: policy
+        }
         const response = await fetch(`https://api.miro.com/v1/boards`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + authentication.MIRO_TOKEN
-            }
+            },
+            body: JSON.stringify(request),
+            json: true
         })
 
         const data = await response.json() 
+
+        console.log(data)
 
         return {
             viewLink: data.viewLink
