@@ -16,7 +16,9 @@ client.on("message", async function(message) {
     const args = body.split(' ');
     const command = args.shift().toLocaleLowerCase();
 
-    if(args[0] !== 'create'){
+    if(command === 'calendar'){
+        args.push(`id:${message.author.lastMessageChannelID}`);
+    } else {
         args.push(message.author)
     }
 

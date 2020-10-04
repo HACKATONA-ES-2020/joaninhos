@@ -1,11 +1,13 @@
 const convertTime = require('convert-time');
+const dbEvents = require('./../CRUDs/Event')
 
 function handleCreateEvent(contents) {
 
     eventObject = {
         date: "",
         time: "",
-        name: ""
+        name: "",
+        id: "",
     }
 
     contents.forEach(string => {      
@@ -24,33 +26,40 @@ function handleCreateEvent(contents) {
             eventObject.time = timeConverted
         }
 
+        if(string.startsWith("id:")) {
+            eventObject.id = string.substring(3);
+        }
+
     });
     const dateSplitted = eventObject.date.split('/')
     const startTimeSplitted = eventObject.time.split(':')
     
-    const startDate = new Date(dateSplitted[2], dateSplitted[1] - 1, dateSplitted[0], startTimeSplitted[0], startTimeSplitted[1])
-
     const eventDetails = {
         description: eventObject.name,
-        dateTime: startDate
+        date: dateSplitted,
+        startTime: startTimeSplitted,
+        id: eventObject.id
     }
 
-    try {
-        return `Evento ${eventDetails.description} criado! (${eventDetails.dateTime})`
-    } catch (e){
-        return e
-    }
+    dbEvents('add', eventDetails);
+
+    return `Evento ${eventDetails.description} criado! (${eventDetails.dateTime})`
+}
+
+const handleShowEvents = async (args) => {
+    const events = await dbEvents('getAll', args[1]);
+    console.log(events);
+    //let result = '';
+    //events.filter(e => e.id === args[1]).forEach(i => result += `${i.description}, dia ${i.date[0]}/${i.date[1]}/${i.date[2]} às ${i.startTime[0]}:${i.startTime[1]}`);
+    return events;
 }
 
 
 // Exports
 module.exports = { 
     func: function(args) { 
-        if (args[0] === "create") {
-            const event = handleCreateEvent(args);
-            return event;
-        }else{
-            return "O evento não pode ser criado.";
-        }
+        
+        if (args[0] === "create") return handleCreateEvent(args);
+        else if(args[0] === "show" && args.length === 2) return handleShowEvents(args);
     },
 };
