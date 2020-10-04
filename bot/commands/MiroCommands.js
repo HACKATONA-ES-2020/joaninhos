@@ -1,4 +1,5 @@
-const client = require("../client/MiroClient")
+const client = require("../client/MiroClient");
+const { func } = require("./GitHubCommands");
 
 const argFunc = new Map();
 
@@ -13,10 +14,22 @@ async function getBoard(args){
     return `${resp.name} \n ${resp.description} \n ${resp.viewLink} \n`
 }
 
-async function createBoard(){
-    const resp = await client.create()
+async function createBoard(args){
+    const title = args.shift()
+
+    return typeof(title) !== "string" ? createWithoutTitle() : createWithTitle(title)
+}
+
+async function createWithoutTitle(){
+    const resp = await client.createWithoutTitle()
 
     return resp.viewLink
+}
+
+async function createWithTitle(title){
+    const resp = await client.create(title)
+
+    return `${resp.viewLink} \n ${resp.name}` 
 }
 
 module.exports = { 
