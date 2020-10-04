@@ -5,10 +5,14 @@ const argFunc = new Map();
 
 argFunc.set("repositories", findUserRepositories);
 argFunc.set("search-user", searchUserByName);
+argFunc.set("whoami", searchMe)
 
-async function createNewRepository() {
-    const repo = await gitClient.createNewRepository();
+async function searchMe(token){
+    const user = await gitClient.searchMe(token);
 
+    return `${user.login} \n ${user.name} \n ${user.email} 
+    \n ${user.avatarURL} \n ${user.company} \n ${user.location} 
+    \n ${user.bio} \n\n`;
 }
 
 async function findUserRepositories(username) {
@@ -33,6 +37,7 @@ async function searchUserByName(username) {
 module.exports = {
     func: async function (args) {
         const func = args.shift();
-        return argFunc.get(func)(args[0]);
+        const arg = args.shift();
+        return argFunc.get(func)(arg);
     },
 };
