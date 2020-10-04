@@ -46,11 +46,12 @@ function handleCreateEvent(contents) {
 // Exports
 module.exports = { 
     func: function(args) { 
+
         if (args[0] === "create") {
             const event = handleCreateEvent(args);
             return event;
         }else{
-            return "O evento não pode ser criado.";
+            return "Invalid command - use !calendar create name:EventName date:dd/mm/aaaa time:hPM or AM";
         }
     },
 };
