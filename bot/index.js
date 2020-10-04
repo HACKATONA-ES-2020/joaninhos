@@ -29,10 +29,11 @@ client.on("message", async function(message) {
     const response = await commandFunc.func(args);
     
     message.channel.send(
+        response.toggle ? response.message : 
         new Discord.MessageEmbed()
             .setColor('#3A2956')
             .setTitle('Officebot says:')
             .setDescription(response)
             .setTimestamp()
-        );
+        )
 });

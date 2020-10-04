@@ -1,15 +1,20 @@
-
 function coffee(){
-
+    return {
+        toggle: true,
+        message: "@everyone coffee time team"
+    }
 }
 
 function coffeeTime(time){
-
+    return {
+        toggle: true,
+        message: `@everyone coffee time in ${time.shift()} minutes team!`
+    }
 }
 
 const argFunc = new Map()
 
-argFunc.set("", coffee)
+argFunc.set("now", coffee)
 argFunc.set("time", coffeeTime)
 
 module.exports = { 
