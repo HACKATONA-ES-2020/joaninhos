@@ -1,5 +1,7 @@
-bot/node_modules/
+*/node_modules/
 
-bot/config/config.json
+*/config/config.json
 
-bot/package-lock.json
+*/package-lock.json
+
+*/.env

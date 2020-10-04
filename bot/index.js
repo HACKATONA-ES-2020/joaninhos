@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
-const config = require("./config/config.json");
 const commandMap = require("./commands")
+require('dotenv/config')
 
 const client = new Discord.Client();
 
-client.login(config.BOT_TOKEN);
+client.login(process.env.DISCORD_TOKEN);
 
 const prefix = "!";
 
