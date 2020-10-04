@@ -1,17 +1,33 @@
 //client para chamda da api do git
+const authentication = require("../config/config.json")
 const fetch = require("node-fetch");
+const { Octokit } = require("@octokit/rest");
 
-async function createNewRepository() {
-    try{
-        const response = await fetch(method, `https://api.github.com/users/${username}/repos`);
+async function searchMe(token) {
+    try {
+        const octokit = new Octokit({
+            auth: token
+        });
+        const response = await octokit.request('GET /user')
+        const data = response.data;
 
-    } catch (e){
+        return {
+            login: data.login,
+            name: data.name,
+            email: data.email,
+            avatarURL: data.avatar_url,
+            profileURL: data.html_url,
+            company: data.company,
+            location: data.location,
+            bio: data.bio
+        };
+
+    } catch (e) {
         return e;
-    } 
+    }
 }
 
 async function searchByName(username) {
-
     try {
         const response = await fetch(`https://api.github.com/users/${username}`);
         const data = await response.json();
@@ -53,9 +69,10 @@ async function getRepositories(username) {
 }
 
 const gitHubClient = {
+    searchMe: searchMe,
     getRepositories: getRepositories,
     searchByName: searchByName,
-    createNewRepository: createNewRepository,
+    listRepoLanguages: listRepoLanguages,
 }
 
 module.exports = gitHubClient
