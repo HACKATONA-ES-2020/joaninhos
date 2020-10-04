@@ -1,6 +1,5 @@
 const convertTime = require('convert-time');
 
-
 function handleCreateEvent(contents) {
 
     eventObject = {
@@ -19,19 +18,19 @@ function handleCreateEvent(contents) {
         }
 
         if(string.startsWith("time:")) {
-            let timePM = string.substring(5);
-            let timeConverted = convertTime(timePM)
+            const timePM = string.substring(5);
+            const timeConverted = convertTime(timePM)
 
             eventObject.time = timeConverted
         }
 
     });
-    let dateSplitted = eventObject.date.split('/')
-    let startTimeSplitted = eventObject.time.split(':')
+    const dateSplitted = eventObject.date.split('/')
+    const startTimeSplitted = eventObject.time.split(':')
     
-    let startDate = new Date(dateSplitted[2], dateSplitted[1] - 1, dateSplitted[0], startTimeSplitted[0], startTimeSplitted[1])
+    const startDate = new Date(dateSplitted[2], dateSplitted[1] - 1, dateSplitted[0], startTimeSplitted[0], startTimeSplitted[1])
 
-    let eventDetails = {
+    const eventDetails = {
         description: eventObject.name,
         dateTime: startDate
     }
@@ -47,14 +46,11 @@ function handleCreateEvent(contents) {
 // Exports
 module.exports = { 
     func: function(args) { 
-
-        console.log(args);
-    //Test return
-    if (args[0] === "create") {
-        const event = handleCreateEvent(args);
-        return event;
-    }else{
-        return "Bah viajou";
-    }
-     },
+        if (args[0] === "create") {
+            const event = handleCreateEvent(args);
+            return event;
+        }else{
+            return "O evento não pode ser criado.";
+        }
+    },
 };
