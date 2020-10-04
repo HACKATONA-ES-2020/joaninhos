@@ -13,11 +13,8 @@ async function getBoard(args){
     return `${resp.name} \n ${resp.description} \n ${resp.viewLink} \n`
 }
 
-async function createBoard(args){
-    const id = args.shift()
-
-    const resp = await client.create(id)
-
+async function createBoard(){
+    const resp = await client.create()
 
     return resp.viewLink
 }
