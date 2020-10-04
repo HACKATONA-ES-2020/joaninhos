@@ -1,7 +1,7 @@
 FROM node:14
 
-WORKDIR /usr/src/app
-
 ADD bot ./
+
+RUN npm install
 
 CMD ["node", "index.js"]
