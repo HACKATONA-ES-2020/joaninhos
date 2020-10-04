@@ -1,5 +1,4 @@
 const client = require("../client/MiroClient");
-const { func } = require("./GitHubCommands");
 
 const argFunc = new Map();
 
