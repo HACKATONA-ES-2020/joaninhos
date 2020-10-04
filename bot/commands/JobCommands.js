@@ -1,7 +1,3 @@
-let person = {
-    author: "",
-}
-
 let people = []
 
 const argFunc = new Map();
@@ -10,28 +6,49 @@ argFunc.set("hello", welcome)
 argFunc.set("bye", bye)
 argFunc.set("print", print)
 
-function print(){
-    return person
+function print(personAux) {
+    let peopleOnline = ''
+    people.forEach(person => {
+        peopleOnline += `${person.author} is online! \n`
+    })
+    return peopleOnline
 }
 
-function welcome(){
-    person["initialTime"] = new Date().toLocaleTimeString()
+function welcome(personAux) {
+    let personIsInTheList = false
+    people.forEach(person => {
+        if (person.author === personAux.author) {
+            personIsInTheList = true
+        }
+    })
 
-   return `${person.author} started to work at ${person["initialTime"]}`
+    if (!personIsInTheList) {
+        people.push(personAux)
+        personAux.initialTime = new Date().toLocaleTimeString()
+        return `${personAux.author} started to work at ${personAux.initialTime}`
+    }
+    return
 }
 
-function bye(){
-    person["finalTime"] = new Date().toLocaleTimeString()
-    // person.totalTime = person.finalTime - person.initialTime
+function bye(personAux) {
+    personAux.finalTime = new Date().toLocaleTimeString()
+    people.forEach((person, index) => {
+        if (person.author === personAux.author) {
+            people.splice(index, 1)
+        }
+    })
 
-    return `${person.author} finished to work at ${person["finalTime"]}`
+    return `${personAux.author} finished to work at ${personAux.finalTime}`
 }
 
-module.exports = { 
-    func: function(args) { 
+module.exports = {
+    func: function (args) {
         const func = args.shift()
-        person["author"] = args[0].username
-
-        return argFunc.get(func)();
-     },
+        const personAux = {
+            author: args[0].username,
+            initialTime: '',
+            finalTime: '',
+        }
+        return argFunc.get(func)(personAux);
+    },
 };
