@@ -1,7 +1,39 @@
 //client para chamda da api do git
 const fetch = require("node-fetch");
 
-async function getRepositories(username){
+async function createNewRepository() {
+
+    /* try{
+        const response = await fetch(method, `https://api.github.com/users/${username}/repos`);
+
+    } catch (e){
+        return "SCHUBRILHOS AO CRIAR REPOSITORIO"
+    } */
+}
+
+async function searchByName(username) {
+    let user = [];
+
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        const data = await response.json();
+
+        return {
+            login: data.login,
+            name: data.name,
+            email: data.email,
+            avatarURL: data.avatar_url,
+            profileURL: data.html_url,
+            company: data.company,
+            location: data.location,
+            bio: data.bio
+        };
+    } catch (e) {
+        return "SCHUBRILHOS AO ENCONTRAR USUARIO"
+    }
+}
+
+async function getRepositories(username) {
     let repos = [];
 
     try {
@@ -18,12 +50,14 @@ async function getRepositories(username){
 
         return repos;
     } catch (e) {
-        return "CAIU NO CATCH";
+        return "SCHUBRILHOS AO PEGAR REPOSITORIOS";
     }
 }
 
 const gitHubClient = {
     getRepositories: getRepositories,
+    searchByName: searchByName,
+    createNewRepository: createNewRepository,
 }
 
 module.exports = gitHubClient
