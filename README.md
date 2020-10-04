@@ -56,3 +56,7 @@ OfficeBot é um bot para auxiliar a experiência de Home Office usando o Discord
 - ```!job bye```:retorna o horário de saída da pessoa
 
 - ```!job print```:retorna todos que estão online
+
+
+### Discord Token
+- O token que está no config.json não funciona, visto que se o token é comittado em repositórios públicos ele se auto regenera para que ninguém possa usar, caso queiram rodar, favor solicitar o token atual
