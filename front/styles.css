@@ -101,7 +101,7 @@ section {
     content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
     color: #f75771; /* Change the color */
     font-weight: bold; /* If you want it to be bold */
-    font-size: 40px;
+    font-size: 30px;
     display: inline-block; /* Needed to add space between the bullet and the text */
     width: 1em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
@@ -109,7 +109,7 @@ section {
 
 #items li {
     padding-bottom: 30px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 300;
 }
 
