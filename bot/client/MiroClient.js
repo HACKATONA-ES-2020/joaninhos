@@ -22,22 +22,21 @@ async function getBoard(id){
     }
 }
 
-async function shareBoard(id){
+async function createBoard(){
     try {
-        const response = await fetch(`https://api.miro.com/v1/boards/${id}`)
-        const data = await response.json();
-
-        data.forEach(field => {
-            const board = {
-                name:  field.name,
-                description: field.description,
-                link: field.viewLink
+        const response = await fetch(`https://api.miro.com/v1/boards`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + authentication.MIRO_TOKEN
             }
-        });
+        })
 
-        console.log(data)
+        const data = await response.json() 
 
-        return data
+        return {
+            viewLink: data.viewLink
+        }
     } catch (e) {
         return "error"
     }
@@ -45,7 +44,7 @@ async function shareBoard(id){
 
 const miroClient = {
     get: getBoard,
-    share: shareBoard,
+    create: createBoard,
 }
 
 module.exports = miroClient

@@ -3,6 +3,7 @@ const client = require("../client/MiroClient")
 const argFunc = new Map();
 
 argFunc.set("get", getBoard)
+argFunc.set("create", createBoard)
 
 async function getBoard(args){
     const id = args.shift()
@@ -12,8 +13,13 @@ async function getBoard(args){
     return `${resp.name} \n ${resp.description} \n ${resp.viewLink} \n`
 }
 
-function createBoard(args){
+async function createBoard(args){
+    const id = args.shift()
 
+    const resp = await client.create(id)
+
+
+    return resp.viewLink
 }
 
 module.exports = { 
