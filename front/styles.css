@@ -1,0 +1,171 @@
+body {
+    font-family: roboto, sans-serif;
+    color: #231835;
+    background-color: #513979;
+    margin: 0 auto;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #61c6e2;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-image: url('https://i.imgur.com/90kVEAe.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 20% 80%;
+    height: 400px;
+    padding: 15px;
+}
+
+.title-container {
+    font-family: 'Oswald', sans-serif;
+    margin-left: 100px;
+}
+
+.title-container h1 {
+    font-size: 60px;
+    color: #61c6e2;
+    text-shadow: 1px 1px 0px #3f5970;
+    line-height: 40px;
+}
+
+.title-container h2 {
+    font-size: 38px;
+    font-weight: lighter;
+    color: #fa759e;
+    letter-spacing: 7px;
+}
+
+nav {
+    align-self: flex-end;
+    width: 20%;
+    height: 40%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding-top: 20px;
+}
+
+nav li a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    color: #61c6e2;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-right: 50px;
+    text-align: center;
+    padding: 5px 10px 5px 10px;
+}
+
+nav li a:hover {
+    background-color: #513979;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+#items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #33234d;
+    color: #fffdfd;
+    margin-bottom: 50px;
+}
+
+#items ul {
+    width: 40%;
+    list-style: none;
+}
+
+#items ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #f75771; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    font-size: 40px;
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+#items li {
+    padding-bottom: 30px;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.img-container {
+    width: 30%;
+}
+
+.text-container {
+    width: 70%;
+}
+
+#subheader {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+#subheader h1 {
+    font-family: 'Roboto Condensed';
+    color: #fffdfd;
+    font-size: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-right: 50px;
+    text-align: right;
+    margin-top: 90px;
+    line-height: 50px;
+    margin-bottom: 50px;
+
+}
+
+#links ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+#links li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+    border-radius: 40px;
+    padding: 15px 20px;
+    margin: 0px 50px;
+} 
+
+footer {
+    font-size: 12px;
+    background-color: #231835;
+    padding: 15px;
+    color: #957CBF;
+    text-align: center;
+    line-height: 10px;
+}
