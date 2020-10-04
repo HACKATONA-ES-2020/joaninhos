@@ -2,17 +2,15 @@
 const fetch = require("node-fetch");
 
 async function createNewRepository() {
-
-    /* try{
+    try{
         const response = await fetch(method, `https://api.github.com/users/${username}/repos`);
 
     } catch (e){
-        return "SCHUBRILHOS AO CRIAR REPOSITORIO"
-    } */
+        return e;
+    } 
 }
 
 async function searchByName(username) {
-    let user = [];
 
     try {
         const response = await fetch(`https://api.github.com/users/${username}`);
@@ -29,7 +27,7 @@ async function searchByName(username) {
             bio: data.bio
         };
     } catch (e) {
-        return "SCHUBRILHOS AO ENCONTRAR USUARIO"
+        return e
     }
 }
 
@@ -50,7 +48,7 @@ async function getRepositories(username) {
 
         return repos;
     } catch (e) {
-        return "SCHUBRILHOS AO PEGAR REPOSITORIOS";
+        return e;
     }
 }
 
