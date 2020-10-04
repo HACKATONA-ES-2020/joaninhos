@@ -16,7 +16,9 @@ client.on("message", async function(message) {
     const args = body.split(' ');
     const command = args.shift().toLocaleLowerCase();
 
-    args.push(message.author)
+    if(args[0] !== 'create'){
+        args.push(message.author)
+    }
 
     if (!commandMap.has(command)){
         return;
