@@ -11,7 +11,8 @@ OfficeBot é um bot para auxiliar a experiência de Home Office usando o Discord
 - Dentro da pasta bot executar > ```bash npm install```
 
 ## Bot Commands
-### Create new event
+### Calendar
+- **Creat new event**
 - ```!calendar create name:EventName date:dd/mm/aaaa time:hPM or AM```
 
 - **Parameters**
@@ -28,4 +29,30 @@ OfficeBot é um bot para auxiliar a experiência de Home Office usando o Discord
 - ```!coffee now```:avisa todos que é hora do café
 
 - ```!coffee time _minute_```:avisa todos que em determinado minutos será a hora do café
-- ```_minute_```:passar os minútos até o café - ex: ```!coffee time 30 ```
+- ```_minute_```:passar os minutos até o café - ex: ```!coffee time 30 ```
+
+### GitHub
+- **Search user repositories**
+- ```!git repositories _username_```
+
+- **Search user data**
+- ```!git search-user _username_```
+
+- ```_username_```:username do github 
+- Exemple ```!git search-user meuNick```
+
+### Miro 
+- **Create board**
+- ```!miro create```:cria boar sem título
+
+- ```!miro create _titulo_```:cria boar com título
+
+- **Get board**
+- ```!miro get _id do board_```:retorna link do board escolhido
+
+### Jobs
+- ```!job hello```:retorna o horário de chegada da pessoa
+
+- ```!job bye```:retorna o horário de saída da pessoa
+
+- ```!job print```:retorna todos que estão online
