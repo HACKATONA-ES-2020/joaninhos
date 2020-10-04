@@ -25,7 +25,7 @@ async function getBoard(id){
 async function createBoard(){
     try {
         const response = await fetch(`https://api.miro.com/v1/boards`, {
-            method: 'post',
+            method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + authentication.MIRO_TOKEN
