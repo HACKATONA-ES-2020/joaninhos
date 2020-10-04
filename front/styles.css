@@ -141,7 +141,6 @@ section {
     margin-top: 90px;
     line-height: 50px;
     margin-bottom: 50px;
-
 }
 
 #links ul {
@@ -160,6 +159,17 @@ section {
     padding: 15px 20px;
     margin: 0px 50px;
 } 
+
+.img-examples {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #33234d;
+    color: #fffdfd;
+    margin-bottom: 50px;
+}
 
 footer {
     font-size: 12px;

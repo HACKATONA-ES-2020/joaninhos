@@ -1,0 +1,160 @@
+body {
+    font-family: roboto, sans-serif;
+    color: #231835;
+    background-color: #513979;
+    margin: 0 auto;
+}
+
+span{
+    color: #fa759e;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #61c6e2;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-image: url('https://i.imgur.com/90kVEAe.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 20% 80%;
+    height: 400px;
+    padding: 15px;
+}
+
+.title-container {
+    font-family: 'Oswald', sans-serif;
+    margin-left: 100px;
+}
+
+.title-container h1 {
+    font-size: 60px;
+    color: #61c6e2;
+    text-shadow: 1px 1px 0px #3f5970;
+    line-height: 40px;
+}
+
+.title-container h2 {
+    font-size: 38px;
+    font-weight: lighter;
+    color: #fa759e;
+    letter-spacing: 7px;
+}
+
+nav {
+    align-self: flex-end;
+    width: 20%;
+    height: 40%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding-top: 20px;
+}
+
+nav li a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    color: #61c6e2;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-right: 50px;
+    text-align: center;
+    padding: 5px 10px 5px 10px;
+}
+
+nav li a:hover {
+    background-color: #513979;
+}
+
+section {
+    display: flex-end;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+section header {
+    align-items: center;
+    flex-direction: column;
+    background-image: none;
+    height: auto;
+    text-align: center;
+}
+
+section h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: lighter;
+    text-align: center;
+    border: none;
+    background-color: none;
+}
+
+section h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: initial;
+    text-align: center;
+    font-size: 15px;
+}
+
+section p {
+    line-height: 30px;
+    margin: 0;
+}
+
+#about {
+    width: 70%;
+    margin: 0 auto;
+    background-color:#33234D
+}
+
+#about header {
+    margin-right: 80px;
+}
+
+#about h1 {
+    color: #54C1F4;
+    font-size: 20px;
+    border: none;
+    background-color: none;
+    text-align: left;
+    padding-bottom:20px;
+}
+
+#about h2 {
+    color: #FFFDFD;
+    text-align: left;
+    padding-bottom:20px;
+}
+
+.about-container {
+    text-align: left;
+    background:#1E1E1E;
+    border-radius: 5px;
+    margin-bottom: 52px;
+}
+
+#list{
+  color: #FFFDFD;
+  padding:25px;
+  font-family: 'Roboto Mono', monospace;
+}
+footer {
+    font-size: 12px;
+    background-color: #fbfaf9;
+    padding: 15px;
+    color: #947a7a;
+    text-align: center;
+    line-height: 10px;
+}
