@@ -29,7 +29,7 @@ client.on("message", function(message) {
     message.channel.send(
         new Discord.MessageEmbed()
             .setColor('#3A2956')
-            .setTitle('Officebot says: ' + message)
+            .setTitle('Officebot says:')
             .setDescription(response)
             .setTimestamp()
         );
