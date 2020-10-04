@@ -54,7 +54,7 @@ module.exports = {
         const event = handleCreateEvent(args);
         return event;
     }else{
-        return "Bah viajou";
+        return "Comando inválido - use !calendar create name:NomeDoEvento date:dd/mm/aaaa time:HPM ou AM";
     }
      },
 };
